@@ -10,28 +10,34 @@ public class Test4 {
 		String str2 = sc.nextLine();
 		String str3 = sc.nextLine();
 		String str4 = sc.nextLine();
-		// String[] result=new String[5];
 		List<String> resultList = new ArrayList<String>();
 		int index = 1;
+		boolean f = true;
+		boolean s = true;
 		int minlength = Math.min(str1.length(), str2.length());
 		int minlength2 = Math.min(str3.length(), str4.length());
 		for (int i = 0; i < minlength; i++) {
-			if (Character.isAlphabetic(str1.charAt(i))) {
-				boolean flag = str2.substring(i, i + 1).equals(
-						str1.substring(i, i + 1));
-				if (flag == true) {
+			boolean flag = str2.substring(i, i + 1).equals(
+					str1.substring(i, i + 1));
+			if (flag == true) {
+				if ((((str2.charAt(i) >= 65) && (str2.charAt(i) <= 90)) || ((str2
+						.charAt(i) >= 97) && (str2.charAt(i) <= 122))) && f && s) {
 					resultList.add(str1.substring(i, i + 1));
-					System.out.println(str1.substring(i, i + 1));
+					f = false;
+				} else if(!f&&s) {
+					resultList.add(str1.substring(i, i + 1));
+					s=false;
 				}
 			}
 		}
 		for (int i = 0; i < minlength2; i++) {
-			if (Character.isAlphabetic(str3.charAt(i))) {
+			if (((str3.charAt(i) >= 65) && (str3.charAt(i) <= 90))
+					|| ((str3.charAt(i) >= 97) && (str3.charAt(i) <= 122))) {
 				boolean flag = str4.substring(i, i + 1).equals(
 						str3.substring(i, i + 1));
 				if (flag == true) {
 					resultList.add(String.format("%02d", i));
-					System.out.println(str4.substring(i, i + 1));
+					break;
 				}
 			}
 		}
@@ -60,11 +66,14 @@ public class Test4 {
 			break;
 		}
 		sb.append(" ");
-		if (resultList.get(1).toString() == "E") {
-			sb.append("14:");
+		if (Character.isAlphabetic(resultList.get(1).charAt(0))) {
+			int hours = (int) resultList.get(1).charAt(0) - 55;
+			sb.append(String.format("%02d", hours)).append(":");
+		} else {
+			int hours = Integer.parseInt(resultList.get(1));
+			sb.append(String.format("%02d", hours)).append(":");
 		}
 		sb.append(resultList.get(2));
-		System.out.print(resultList.toString());
 		System.out.print(sb.toString());
 	}
 }
