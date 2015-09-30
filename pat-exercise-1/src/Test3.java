@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
+/*
+ * 
+ * 令Pi表示第i个素数。现任给两个正整数M <= N <= 10000，请输出PM到PN的所有素数。
+ * 
+ * */
 public class Test3 {
 
 	public static void main(String[] args) {

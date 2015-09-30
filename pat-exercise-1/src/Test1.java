@@ -1,6 +1,9 @@
 import java.util.Scanner;
 
-
+/*
+ * 给定区间[-2的31次方, 2的31次方]内的3个整数A、B和C，请判断A+B是否大于C。
+ * 
+ * */
 public class Test1 {
 
 	public static void main(String[] args) {
